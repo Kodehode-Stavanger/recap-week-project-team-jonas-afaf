@@ -3,7 +3,7 @@ const topSellers = [
     title: "Grand Theft Auto V",
     developer: "Rockstar Games",
     releaseYear: 2013,
-    categories: ["Action", "Adventure", "RPG"],
+    categories: ["Action", " Adventure", " RPG"],
     description:
       "Grand Theft Auto V is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the seventh main entry in the Grand Theft Auto series, set within the fictional state of San Andreas. The single-player story follows three protagonists—retired bank robber Michael De Santa, street gangster Franklin Clinton, and drug dealer Trevor Philips—and their attempts to commit heists while under pressure from a corrupt government agency and powerful criminals.",
     platforms: ["PC", "Playstation", "X-Box"],
@@ -13,7 +13,7 @@ const topSellers = [
     title: "Minecraft",
     developer: "Mojang",
     releaseYear: 2011,
-    categories: ["Sandbox", "Survival"],
+    categories: ["Sandbox", " Survival"],
     description:
       "Minecraft is a sandbox video game developed and published by Mojang. In Minecraft, players can build and explore virtual worlds made up of blocks. The game has various modes, including survival mode where players must acquire resources and maintain health, and creative mode where players have unlimited resources and can create elaborate structures.",
 
@@ -43,7 +43,7 @@ const topSellers = [
     logo: "wii-sports-logo.png",
   },
   {
-    title: "PlayerUnknown's Battlegrounds (PUBG)",
+    title: "PlayerUnknown's Battlegrounds",
     developer: "PUBG Corporation",
     releaseYear: 2017,
     categories: ["Battle Royale"],
@@ -68,7 +68,7 @@ const topSellers = [
     title: "The Legend of Zelda: Breath of the Wild",
     developer: "Nintendo",
     releaseYear: 2017,
-    categories: ["Action", "Adventure"],
+    categories: ["Action", " Adventure"],
     description:
       "The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo. Set in a vast open world, players control Link as he explores the kingdom of Hyrule, battles enemies, solves puzzles, and embarks on a quest to defeat the ancient evil Calamity Ganon. The game is praised for its immersive gameplay and attention to detail.",
 
@@ -90,7 +90,7 @@ const topSellers = [
     title: "Red Dead Redemption 2",
     developer: "Rockstar Games",
     releaseYear: 2018,
-    categories: ["Action", "Adventure"],
+    categories: ["Action", " Adventure"],
     description:
       "Red Dead Redemption 2 is an action-adventure game developed by Rockstar Games. Set in the late 1800s, the game follows Arthur Morgan, a member of the Van der Linde gang, as he navigates the changing American frontier. The game features an expansive open world, immersive storytelling, and a mix of action, exploration, and interaction with a rich cast of characters.",
 
@@ -109,3 +109,52 @@ const topSellers = [
     logo: "mario-kart-logo.jpg",
   },
 ];
+
+const title = document.createElement("h1");
+title.classList.add("alig-title");
+title.textContent = "The 10 Best selling Games of 2023";
+document.body.append(title);
+
+const gridContainer = document.createElement("div");
+gridContainer.classList.add("grid-container");
+document.body.append(gridContainer);
+
+for (let i = 0; i < topSellers.length; i++) {
+  const wrap = document.createElement("div");
+  wrap.classList.add("wrap");
+  gridContainer.append(wrap);
+
+  const titleGame = document.createElement("h2");
+  titleGame.textContent = i + 1 + "-" + topSellers[i].title;
+
+  wrap.append(titleGame);
+
+  //   //to add caption1 to image
+  const caption1 = document.createElement("figcaption");
+  caption1.textContent =
+    topSellers[i].developer + " ," + topSellers[i].releaseYear;
+  wrap.append(caption1);
+
+  //to add image
+  const imgEl = document.createElement("img");
+  imgEl.setAttribute("src", "logos/" + topSellers[i].logo);
+  imgEl.classList.add("style-image");
+  wrap.append(imgEl);
+
+  //to add caption2 to image
+  const caption2 = document.createElement("h3");
+  caption2.textContent = "Platforms: " + topSellers[i].platforms;
+  wrap.append(caption2);
+
+  const txt = document.createElement("h3");
+  // for (let category of topSellers[i].categories) {
+  //   txt.textContent += category + " ";
+  // }
+  txt.textContent = "Category: " + topSellers[i].categories;
+  wrap.append(txt);
+
+  const paraEl = document.createElement("p");
+  paraEl.textContent = topSellers[i].description;
+  paraEl.classList.add("p");
+  wrap.append(paraEl);
+}
